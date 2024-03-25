@@ -1,21 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./assets/components/Header";
 import TodoCreate from "./assets/components/TodoCreate";
 import TodoFilter from "./assets/components/TodoFilter";
 import TodoList from "./assets/components/TodoList";
 import Todocomputed from "./assets/components/Todocomputed";
-import backgroundImage from "./assets/images/bg-mobile-light.jpg"; // Importar la imagen
 
-const initialStateTodos = [
-    { id: 1, title: "datos base 1", completed: true },
-    { id: 2, title: "datos base 2", completed: false },
-    { id: 3, title: "datos base 3", completed: false },
-    { id: 4, title: "datos base 4", completed: false },
-    { id: 5, title: "datos base 5", completed: false },
-];
+
+const initialStateTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const App = () => {
     const [todos, setTodos] = useState(initialStateTodos);
+    useEffect(()=>{
+        localStorage.setItem("todos", JSON.stringify(todos))
+    },[todos]);
 
     const createTodo = (title)=>{
 
@@ -65,8 +62,8 @@ const App = () => {
     return (
         <>
             <div
-                className="bg-contain bg-no-repeat bg-gray-300 min-h-screen "
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                className="bg-contain bg-no-repeat bg-[url('./assets/images/bg-mobile-light.jpg')] bg-gray-300 min-h-screen md:bg-[url('./assets/images/bg-desktop-light.jpg')]"
+               
             >
                 <Header></Header>
                 <main className="container mx-auto px-4 mt-8">

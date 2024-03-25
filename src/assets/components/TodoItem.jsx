@@ -4,7 +4,7 @@ const TodoItem = ({ todo, removeTodo, updateTodo }) => {
     const { id, title, completed } = todo;
 
     return (
-        <article className="flex gap-4 py-4 border-b-gray-300 border-b">
+        <article className="flex gap-4 py-4 border-b-gray-300 border-b ">
             <button
                 className={`h-5 w-5  ml-4  rounded-full border-2  ${completed ? "grid place-items-center flex-none  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" : "inline-block flex-none"}`}
                 onClick={()=>updateTodo(id)}
